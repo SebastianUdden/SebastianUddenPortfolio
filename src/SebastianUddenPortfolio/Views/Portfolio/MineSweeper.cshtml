@@ -1,0 +1,231 @@
+﻿@{
+    Layout = "~/Views/Shared/_PortfolioLayout.cshtml";
+    ViewBag.Title = "Minesweeper";
+}
+
+<section id="minesweeper" class="container content-section text-center">
+    <div class="row">
+        <br />
+        <div class="col-lg-8 col-lg-offset-2">
+            <h2>Minesweeper</h2>
+            <hr />
+            <div ng-controller="MinesweeperCtrl">
+                <div style="padding:40px; background-color:rgba(220, 220, 220, 0.60); border-radius:10px;">
+                    <button class="standard-btn btn-width-medium" ng-if="hideStartButton" ng-click="showMines();">Start Game</button>
+                    <table ng-if="isMinesVisible" class="minefield" align="center">
+                        <tr ng-repeat="row in minefield.rows">
+                            <td ng-repeat="spot in row.spots" ng-click="uncoverSpot(spot)">
+                                <!-- #region Box-images -->
+                                <img ng-if="spot.isCovered" src="~/img/Portfolio/Minesweeper/covered.png" />
+                                <img ng-if="!spot.isCovered && spot.content == 'empty'" src="~/img/Portfolio/Minesweeper/empty.png" />
+                                <img ng-if="!spot.isCovered && spot.content == 'mine'" src="~/img/Portfolio/Minesweeper/mine.png" />
+                                @*<img ng-if="!spot.isCovered && spot.flagged == 'mine'" src="~/img/Portfolio/Minesweeper/flag-mine.png" />*@
+                                <img ng-if="!spot.isCovered && spot.content == 1" src="~/img/Portfolio/Minesweeper/number-1.png" />
+                                <img ng-if="!spot.isCovered && spot.content == 2" src="~/img/Portfolio/Minesweeper/number-2.png" />
+                                <img ng-if="!spot.isCovered && spot.content == 3" src="~/img/Portfolio/Minesweeper/number-3.png" />
+                                <img ng-if="!spot.isCovered && spot.content == 4" src="~/img/Portfolio/Minesweeper/number-4.png" />
+                                <img ng-if="!spot.isCovered && spot.content == 5" src="~/img/Portfolio/Minesweeper/number-5.png" />
+                                <img ng-if="!spot.isCovered && spot.content == 6" src="~/img/Portfolio/Minesweeper/number-6.png" />
+                                <img ng-if="!spot.isCovered && spot.content == 7" src="~/img/Portfolio/Minesweeper/number-7.png" />
+                                <img ng-if="!spot.isCovered && spot.content == 8" src="~/img/Portfolio/Minesweeper/number-8.png" />
+                                <!-- #endregion -->
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                    <h3 ng-if="isWinMessageVisible" style="color:forestgreen">Congratulations, you won!</h3>
+                    <h3 ng-if="isLostMessageVisible" style="color:red">Game Over!</h3>
+                    <button class="standard-btn btn-width-medium" ng-if="isLostMessageVisible" onclick="window.location.href='/Portfolio/Minesweeper'">Play again</button>
+                    <button class="standard-btn btn-width-medium" ng-if="isMinesVisible" onclick="window.location.href = '/Home/Index#portfolio'">Portfolio</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script type="text/javascript">
+    app.controller('MinesweeperCtrl', ['$scope', function ($scope) {
+        $scope.isMinesVisible = false;
+        $scope.hideStartButton = true;
+        $scope.size = 8;
+        $scope.sizeMinus = $scope.size - 1;
+        $scope.sizePlus = $scope.size + 1;
+
+        $scope.isLostMessageVisible = false;
+        $scope.isWinMessageVisible = false;
+
+        $scope.minefield = createMinefield();
+        $scope.uncoverSpot = function (spot) {
+
+            if (!$scope.isWinMessageVisible && !$scope.isLostMessageVisible) {
+                spot.isCovered = false;
+
+                if (spot.content == "mine") {
+                    $scope.isLostMessageVisible = true;
+                } else {
+                    if (hasWon($scope.minefield)) {
+                        $scope.isWinMessageVisible = true;
+                    }
+                }
+            }
+            else {
+            }
+        };
+
+        $scope.showMines = function () {
+            $scope.hideStartButton = false;
+            $scope.isMinesVisible = true;
+        };
+
+        function createMinefield() {
+            var minefield = {};
+            minefield.rows = [];
+
+            for (var i = 0; i < $scope.size; i++) {
+                var row = {};
+                row.spots = [];
+
+                for (var j = 0; j < $scope.size; j++) {
+                    var spot = {};
+                    spot.isCovered = true;
+                    spot.content = "empty";
+                    row.spots.push(spot);
+                }
+
+                minefield.rows.push(row);
+            }
+
+            placeManyRandomMines(minefield); $scope.sizeMinus
+            calculateAllNumbers(minefield);
+
+            return minefield;
+        }
+
+        function getSpot(minefield, row, column) {
+            return minefield.rows[row].spots[column];
+        }
+
+        function placeRandomMine(minefield) {
+            var row = Math.round(Math.random() * $scope.sizeMinus);
+            var column = Math.round(Math.random() * $scope.sizeMinus);
+            var spot = getSpot(minefield, row, column);
+            spot.content = "mine";
+        }
+
+        function placeManyRandomMines(minefield) {
+            for (var i = 0; i < $scope.sizePlus; i++) {
+                placeRandomMine(minefield);
+            }
+        }
+
+        function calculateNumber(minefield, row, column) {
+            var thisSpot = getSpot(minefield, row, column);
+
+            // if this spot contains a mine then we can't place a number here
+            if (thisSpot.content == "mine") {
+                return;
+            }
+
+            var mineCount = 0;
+
+            // check row above if this is not the first row
+            if (row > 0) {
+                // check column to the left if this is not the first column
+                if (column > 0) {
+                    // get the spot above and to the left
+                    var spot = getSpot(minefield, row - 1, column - 1);
+                    if (spot.content == "mine") {
+                        mineCount++;
+                    }
+                }
+
+                // get the spot right above
+                var spot = getSpot(minefield, row - 1, column);
+                if (spot.content == "mine") {
+                    mineCount++;
+                }
+
+                // check column to the right if this is not the last column
+                if (column < $scope.sizeMinus) {
+                    // get the spot above and to the right
+                    var spot = getSpot(minefield, row - 1, column + 1);
+                    if (spot.content == "mine") {
+                        mineCount++;
+                    }
+                }
+            }
+
+            // check column to the left if this is not the first column
+            if (column > 0) {
+                // get the spot to the left
+                var spot = getSpot(minefield, row, column - 1);
+                if (spot.content == "mine") {
+                    mineCount++;
+                }
+            }
+
+            // check column to the right if this is not the last column
+            if (column < $scope.sizeMinus) {
+                // get the spot to the right
+                var spot = getSpot(minefield, row, column + 1);
+                if (spot.content == "mine") {
+                    mineCount++;
+                }
+            }
+
+            // check row below if this is not the last row
+            if (row < $scope.sizeMinus) {
+                // check column to the left if this is not the first column
+                if (column > 0) {
+                    // get the spot below and to the left
+                    var spot = getSpot(minefield, row + 1, column - 1);
+                    if (spot.content == "mine") {
+                        mineCount++;
+                    }
+                }
+
+                // get the spot right below
+                var spot = getSpot(minefield, row + 1, column);
+                if (spot.content == "mine") {
+                    mineCount++;
+                }
+
+                // check column to the right if this is not the last column
+                if (column < $scope.sizeMinus) {
+                    // get the spot below and to the right
+                    var spot = getSpot(minefield, row + 1, column + 1);
+                    if (spot.content == "mine") {
+                        mineCount++;
+                    }
+                }
+            }
+
+            if (mineCount > 0) {
+                thisSpot.content = mineCount;
+            }
+        }
+
+        function calculateAllNumbers(minefield) {
+            for (var y = 0; y < $scope.size; y++) {
+                for (var x = 0; x < $scope.size; x++) {
+                    calculateNumber(minefield, y, x);
+                }
+            }
+        }
+
+        function hasWon(minefield) {
+            for (var y = 0; y < $scope.size; y++) {
+                for (var x = 0; x < $scope.size; x++) {
+                    var spot = getSpot(minefield, y, x);
+                    if (spot.isCovered && spot.content != "mine") {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+    }]);
+</script>

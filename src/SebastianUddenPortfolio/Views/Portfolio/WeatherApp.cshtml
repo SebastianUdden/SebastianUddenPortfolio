@@ -1,0 +1,52 @@
+﻿@{
+    Layout = "~/Views/Shared/_PortfolioLayout.cshtml";
+    ViewBag.Title = "Weather App";
+}
+
+<section id="weatherApp" class="container content-section text-center">
+    <div class="row">
+        <br />
+        <div class="col-lg-8 col-lg-offset-2">
+                <h2>Weather App</h2>
+                <hr />
+                <div>
+                    <div style="padding:40px; background-color:rgba(220, 220, 220, 0.60); border-radius:10px;">
+                        <h4>Forecast by City</h4>
+                        <div class="form-group">
+                            <input type="text" class="form-control" />
+                        </div>
+                        <button class="standard-btn btn-width-medium" onclick="window.location.href = '/Portfolio/weatherforecast'">Get Forecast</button>
+                        <button class="standard-btn btn-width-medium" onclick="window.location.href = '/Home/Index#portfolio'">Portfolio</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<script type="text/javascript">
+
+    // Routes
+    app.config(function ($routeProvider) {
+        $routeProvider
+
+        .when('/', {
+            templateUrl: 'pages/home.html',
+            controller: 'homeCtrl'
+        })
+
+        .when('/forecast', {
+            templateUrl: 'pages/forecast.html',
+            controller: 'forecastCtrl'
+        })
+
+    });
+
+    // Controllers
+    app.controller('homeCtrl', ['$scope', function ($scope) {
+
+    }]);
+
+    app.controller('forecastCtrl', ['$scope', function ($scope) {
+
+    }]);
+</script>

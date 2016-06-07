@@ -1,0 +1,152 @@
+﻿@model MailSenderVM
+
+@{
+    ViewBag.Title = "Sebastian Uddéns Portfolio";
+}
+
+<!-- Intro Header -->
+<header class="intro" id="intro">
+    <div class="intro-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h1 class="brand-heading">Portfolio</h1>
+                    <p class="intro-text">
+                        Web developer, software designer and sound engineer
+                        <br />- Sebastian Uddén
+                    </p>
+                    <a href="#portfolio" class="btn btn-circle page-scroll">
+                        <i class="fa fa-angle-double-down animated"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="container content-section text-center">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <h2>Portfolio</h2>
+        </div>
+    </div>
+    <div class="row">
+        <button class="standard-btn btn-width-medium" onclick="window.location.href = '../portfolio/minesweeper'">Minesweeper</button>
+        <button class="standard-btn btn-width-medium" onclick="window.location.href = '../portfolio/weatherapp'">Weather App</button>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="content-section text-center">
+    <div class="about-section">
+        <div class="container">
+            @*<div class="col-lg-10 col-lg-offset-1">*@
+            <h2>About</h2>
+            <div class="col-lg-5 col-md-6 col-sm-6 col-lg-offset-1 rightParagraph">
+                <p class="pLeft">
+                    My background is rooted in IT as a project lead for website development
+                    (I'm a certified Scrum Master). I've also been working as a sound designer and composer
+                    for games, providing creative know how and expertise in the related fields.
+                    My education has been in Economics and Systems Architecture at Uppsala University
+                    as well as Audio Production. I have entrepeneurial experience through managing two companies and working
+                    as a freelancer.
+                    <br />
+                </p>
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-6 leftParagraph">
+                <p class="pLeft">
+                    In the last few years I've been moving towards software- and web development by taking online
+                    courses and recently finishing the accelerated learning program in C# and .NET at
+                    Academic Work Academy. As a person I'm a pragmatic problem solver with a deep creative spark,
+                    a team player focused on getting the best out of my group as well as applying my knowledge and passion to new challenges and applications.
+                    <br /><br />
+                    If you have any questions please do not hesitate to <a class="page-scroll" href="#contact">contact me!</a>
+                <p />
+            </div>
+            <br />
+            <div class="col-sm-6 col-sm-offset-3 centerImgae divImage ratio11 img-circle" style="background-image: url(../img/general/Sebastian-Uddén_BJ04626.jpg);"></div>
+            <div class="col-lg-10 col-md-12 col-sm-12 col-lg-offset-1">
+                <br />
+                <br />
+                <h3>Download CV</h3>
+                <p>It's available as a pdf below, you can also go to my <a href="https://se.linkedin.com/in/sebastianudden">LinkedIn</a> page.</p>
+                <button class="standard-btn btn-width-medium" onclick="window.open('../general/CV/Sebastian_Uddén_CV.pdf')">CV</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="container content-section text-center">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <h2>Contact</h2>
+            <p>Feel free to contact me via email or phone!</p>
+            <div class="col-sm-4 contactInformation">
+                <h3 class="hidden-xs">Contact Information</h3>
+                <p class="hidden-xs firstP">Sebastian Uddén</p>
+                <p><a href="mailto:sebastian.udden@gmail.com">sebastian.udden@gmail.com</a></p>
+                <p><a href="tel:0046730797992">+46 730 797 992</a></p>
+                <p class="hidden-xs">Stockholm, Sweden</p>
+            </div>
+
+            <div class="col-sm-8">
+                <h3 class="hidden-lg hidden-md hidden-sm topMargin20 bottomMargin0">Notify Me</h3>
+                <!-- #region MailSender -->
+                @*<div asp-validation-summary="ValidationSummary.All"></div>*@
+                <form asp-controller="Home" asp-action="SendAnEmail">
+                    <div class="row">
+                        <div class="col-sm-4 form-group">
+                            <input type="text" asp-for="Subject" placeholder="Subject">
+                            <span asp-validation-for="Subject"></span>
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            <input type="text" asp-for="Name" placeholder="Name">
+                            <span asp-validation-for="Name"></span>
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            <input type="text" asp-for="Email" placeholder="E-mail">
+                            <span asp-validation-for="Email"></span>
+                        </div>
+                    </div>
+                    <textarea asp-for="Message" placeholder="Message" rows="5"></textarea>
+                    <span asp-validation-for="Message"></span>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-12 form-group">
+                            <input class="standard-btn btn-width-small" type="submit" value="Send" style="float: right" />
+                        </div>
+                    </div>
+                </form>
+                <!-- #endregion -->
+            </div>
+
+            <br />
+            <br />
+        </div>
+    </div>
+</section>
+<br />
+<br />
+<br />
+<!-- #region Footer -->
+<footer class="footerStyle">
+    <div class="container text-center">
+        <a href="#intro" class="btn btn-circle page-scroll upChevron">
+            <i class="fa fa-chevron-up animated" style="margin-top: -20px;"></i>
+        </a>
+        <br />
+        <ul class="list-inline banner-social-buttons">
+            <li>
+                <button onclick="window.open('https://se.linkedin.com/in/sebastianudden','_blank')" class="round-icon-btn"><span class="fa fa-linkedin fa-f"></span></button>
+            </li>
+            <li>
+                <button onclick="window.open('https://github.com/sebastianudden', '_blank')" class="round-icon-btn"><span class="fa fa-github fa-fw"></span></button>
+            </li>
+        </ul>
+        <br />
+        <p class="pSmall">Copyright &copy; | Sebastian Uddén| <a class="footerLink" href="mailto:sebastian.udden@gmail.com">sebastian.udden@gmail.com</a> | <a class="footerLink" href="tel:0046730797992"> +46 730 797 992 </a></p>
+    </div>
+</footer>
+<!-- #endregion -->
