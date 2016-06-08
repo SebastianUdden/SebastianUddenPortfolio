@@ -4,7 +4,25 @@
 }
 
 <style>
-    
+    .carousel-inner {
+        height: 41vh;
+    }
+
+    .carousel, img {
+        height: 100% !important;
+        width:100% !important;
+        border: 5px solid #ff6a00;
+    }
+
+    .carousel .item {
+        height: 98% !important;
+    }
+
+    .item img {
+        top: 0;
+        left: 0;
+        min-height: 100% !important;
+    }
 </style>
 <div ng-controller="photoSliderCtrl">
     <div class="container content-section text-center"  ng-if="!showCarousel">
