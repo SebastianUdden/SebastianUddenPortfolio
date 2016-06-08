@@ -1,0 +1,46 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Photo Slider";
+}
+
+<section id="photoSlider" class="container content-section text-center" ng-controller="photoSliderCtrl">
+    <div class="row">
+        <br />
+        <div class="col-lg-8 col-lg-offset-2">
+            <h2>Photo Slider</h2>
+            <hr />
+            <div>
+                <div class="portfolioBorderBox">
+                    <img ng-repeat="slide in slides" ng-src="{{slide.image}}" 
+                         ng-hide="!isCurrentSlideIndex($index)" />
+                    <button class="standard-btn btn-width-medium" onclick="window.location.href = '/Home/Index#portfolio'">Portfolio</button>
+                    <br />
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    app.controller('photoSliderCtrl', ['$scope', function ($scope) {
+        $scope.slides = [
+            { image: 'https://s2.graphiq.com/sites/default/files/5030/media/images/_4286738.jpg', description: 'Image 00' },
+            { image: 'http://www.build-gaming-computers.com/images/best-gaming-motherboards.jpg', description: 'Image 01' },
+            { image: 'http://media.gamersnexus.net/images/media/2013/hardware/asus-maximus-vi.png', description: 'Image 02' },
+            { image: 'http://core0.staticworld.net/images/article/2012/10/gp-100007904-large.jpg', description: 'Image 03' },
+            { image: 'http://www.netro.com.au/services/hardware/specs/video.jpg', description: 'Image 04' },
+        ];
+
+        $scope.currentIndex = 0;
+
+        $scope.setCurrentSlideIndex = function (index) {
+            $scope.currentIndex = index;
+        };
+
+        $scope.isCurrentSlideIndex = function (index) {
+            return $scope.currentIndex === index;
+        };
+    }]);
+</script>

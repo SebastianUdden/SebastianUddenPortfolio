@@ -10,7 +10,7 @@
             <h2>Minesweeper</h2>
             <hr />
             <div ng-controller="MinesweeperCtrl">
-                <div style="padding:40px; background-color:rgba(220, 220, 220, 0.60); border-radius:10px;">
+                <div class="portfolioBorderBox">
                     <button class="standard-btn btn-width-medium" ng-if="hideStartButton" ng-click="showMines();">Start Game</button>
                     <table ng-if="isMinesVisible" class="minefield" align="center">
                         <tr ng-repeat="row in minefield.rows">

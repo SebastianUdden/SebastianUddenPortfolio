@@ -1,0 +1,13 @@
+﻿.myFontColor {
+    color:#ff6a00;
+}
+
+.myBgColor {
+    background-color:#ff6a00;
+}
+
+.portfolioBorderBox {
+    padding:4vh 2vh 2vh 4vh; 
+    background-color:rgba(220, 220, 220, 0.60); 
+    border-radius:10px;
+}

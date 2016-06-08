@@ -3,50 +3,91 @@
     ViewBag.Title = "Weather App";
 }
 
-<section id="weatherApp" class="container content-section text-center">
+<section id="weatherApp" class="container content-section text-center" ng-controller="forecastCtrl">
     <div class="row">
         <br />
         <div class="col-lg-8 col-lg-offset-2">
-                <h2>Weather App</h2>
-                <hr />
-                <div>
-                    <div style="padding:40px; background-color:rgba(220, 220, 220, 0.60); border-radius:10px;">
-                        <h4>Forecast by City</h4>
+            <h2>Weather App</h2>
+            <hr />
+            <div>
+                <div class="portfolioBorderBox">
+                    <div class="form-inline">
                         <div class="form-group">
-                            <input type="text" class="form-control" />
+                            City: <input type="text" class="form-control" ng-model="city" />
+                            Days: <input type="number" class="form-control" ng-model="days" />
                         </div>
-                        <button class="standard-btn btn-width-medium" onclick="window.location.href = '/Portfolio/weatherforecast'">Get Forecast</button>
-                        <button class="standard-btn btn-width-medium" onclick="window.location.href = '/Home/Index#portfolio'">Portfolio</button>
+                        <br />
+                        <br />
+                    </div>
+                    <button class="standard-btn btn-width-large" ng-if="buttonToggle" ng-click="getData(city, days);">Get forecast</button>
+                    <button class="standard-btn btn-width-large" ng-if="!buttonToggle" ng-click="getForecast();">Show forecast</button>
+                    <button class="standard-btn btn-width-medium" onclick="window.location.href = '/Home/Index#portfolio'">Portfolio</button>
+                    <br />
+                    <br />
+                    <p><span ng-if="!buttonToggle">Show <span class="myFontColor">{{days}} days</span> of weather for <span class="myFontColor">{{city}}</span> below </span><span ng-if="buttonToggle && !pageLoad">Showing <span class="myFontColor">{{days}} days</span> of weather for <span class="myFontColor">{{city}}</span> below</span></p>
+                </div>
+            </div>
+            <br>
+            <div ng-repeat="weather in list" ng-if="buttonToggle">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    {{ convertToDate(weather.dt) | date }}
+                                    <img ng-src="{{ 'http://openweathermap.org/img/w/' + weather.weather[0].icon + '.png' }}" />
+                                    <b style="color:#ff6a00">{{weather.weather[0].description}}</b>
+                                </h3>
+                            </div>
+                            <div class="panel-body" >
+                                Daytime temperature: {{ convertToCelcius(weather.temp.day) }} °C<br />
+                                Nighttime temperature: {{ convertToCelcius(weather.temp.night) }} °C
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </section>
 
 <script type="text/javascript">
 
-    // Routes
-    app.config(function ($routeProvider) {
-        $routeProvider
+    //http://api.openweathermap.org/data/2.5/forecast/daily?q=London&cnt=1&APPID=6644f72d11e2ad2bdfdcc81a8e3734a9
 
-        .when('/', {
-            templateUrl: 'pages/home.html',
-            controller: 'homeCtrl'
-        })
+    // Controller
+    app.controller('forecastCtrl', ['$scope', '$resource', function ($scope, $resource) {
+        $scope.days = 3;
+        $scope.city = "Stockholm";
+        $scope.pageLoad = true;
+        $scope.getData = function (getCity, days) {
+            $scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/forecast/daily", {
+                callback: "JSON_CALLBACK"
+            }, { get: { method: "JSONP" } });
 
-        .when('/forecast', {
-            templateUrl: 'pages/forecast.html',
-            controller: 'forecastCtrl'
-        })
+            $scope.weatherResult = $scope.weatherAPI.get({ q: getCity, cnt: days, APPID: '6644f72d11e2ad2bdfdcc81a8e3734a9' });
+            $scope.buttonToggle = !$scope.buttonToggle;
+        };
 
-    });
+        $scope.getData($scope.city, $scope.days);
 
-    // Controllers
-    app.controller('homeCtrl', ['$scope', function ($scope) {
+        $scope.convertToFahrenheit = function (degK) {
+            return Math.round((1.8 * (degK - 273)) + 32);
+        };
 
-    }]);
+        $scope.convertToCelcius = function (degK) {
+            return Math.round(degK - 273);
+        };
 
-    app.controller('forecastCtrl', ['$scope', function ($scope) {
+        $scope.convertToDate = function (date) {
+            return new Date(date * 1000);
+        };
 
+        $scope.getForecast = function () {
+            $scope.cnt = $scope.weatherResult.cnt;
+            $scope.list = $scope.weatherResult.list;
+            $scope.buttonToggle = !$scope.buttonToggle;
+            $scope.pageLoad = false;
+        };
     }]);
 </script>

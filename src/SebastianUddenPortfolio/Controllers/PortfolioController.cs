@@ -18,7 +18,7 @@ namespace SebastianUddenPortfolio.Controllers
             return View();
         }
 
-        public IActionResult WeatherForecast()
+        public IActionResult PhotoSlider()
         {
             return View();
         }
