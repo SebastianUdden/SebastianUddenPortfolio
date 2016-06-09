@@ -496,7 +496,8 @@ footer {
 
 .modal-open .modal {
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y:hidden;
+    max-height: 88%;
 }
 
 /*.navbar-fixed-top, .navbar-fixed-bottom {

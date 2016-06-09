@@ -3,7 +3,7 @@
     ViewBag.Title = "Weather App";
 }
 
-<section id="weatherApp" class="container content-section text-center" ng-controller="forecastCtrl">
+<section id="intro" class="container content-section text-center" ng-controller="forecastCtrl">
     <div class="row">
         <br />
         <div class="col-md-8 col-md-offset-2">
@@ -12,7 +12,8 @@
                     <a href="../portfolio/minesweeper" style="float:left"><span class="fa fa-angle-double-left" style="font-size:x-large;"></span> <span class="hidden-xs" style="font-size:x-large">Previous</span></a>
                 </div>
                 <div class="col-sm-6 col-sm-offset-0 col-xs-8">
-                    <h2>Weather App</h2>
+                    <h2 class="hidden-xs">Weather App</h2>
+                    <h2 class="hidden-sm hidden-md hidden-lg" style="font-size:5vw;">Weather App</h2>
                 </div>
                 <div class="col-sm-3 col-xs-2">
                     <a href="../portfolio/photoslider" style="float:right"><span class="hidden-xs" style="font-size:x-large">Next</span> <span class="fa fa-angle-double-right" style="font-size:x-large;"></span></a>
@@ -30,11 +31,9 @@
                             <br />
                             <br />
                         </div>
-                        <button class="standard-btn btn-width-large" ng-if="buttonToggle" ng-click="getData(city, days);">Get forecast</button>
-                        <button class="standard-btn btn-width-large" ng-if="!buttonToggle" ng-click="getForecast();">Show forecast</button>
-                        <button class="standard-btn btn-width-medium" onclick="window.location.href = '/Home/Index#portfolio'">Portfolio</button>
-                        <br />
-                        <br />
+                        <button class="standard-btn btn-width-large bottomMargin20 rightMargin10" ng-if="buttonToggle" ng-click="getData(city, days);">Get forecast</button>
+                        <button class="standard-btn btn-width-large bottomMargin20 rightMargin10" ng-if="!buttonToggle" ng-click="getForecast();">Show forecast</button>
+                        <button class="standard-btn btn-width-large bottomMargin20 rightMargin10" onclick="window.location.href = '/Home/Index#portfolio'">Portfolio</button>
                         <p><span ng-if="!buttonToggle">Show <span class="myFontColor">{{days}} days</span> of weather for <span class="myFontColor">{{city}}</span> below </span><span ng-if="buttonToggle && !pageLoad">Showing <span class="myFontColor">{{days}} days</span> of weather for <span class="myFontColor">{{city}}</span> below</span></p>
                     </div>
                 </div>

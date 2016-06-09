@@ -131,3 +131,10 @@ body {
 .redT + .tooltip > .tooltip-inner {
     color: #D03427 !important;
 }
+
+.imageText {
+    color:#ffffff;
+    text-shadow:3px 3px 6px #000000; 
+    font-weight:600; 
+    position:center fixed;
+}

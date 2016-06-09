@@ -33,80 +33,91 @@
     }
 </style>
 <div ng-controller="photoSliderCtrl">
-    <div class="container content-section text-center">
+    <div id="intro" class="container content-section text-center">
         <div class="row">
             <br />
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-sm-8 col-sm-offset-2">
                 <div class="row">
                     <div class="col-sm-3 col-xs-2">
-                        <a href="../portfolio/weatherapp" style="float:left"><span class="fa fa-angle-double-left" style="font-size:x-large;"></span> <span class="hidden-xs" style="font-size:x-large">Previous</span></a>
+                        <a href="../portfolio/weatherapp" style="float:left"><span class="fa fa-angle-double-left" style="font-size:x-large;"></span> <span class="hidden-xs hidden-sm" style="font-size:x-large">Previous</span></a>
                     </div>
-                    <div class="col-sm-6 col-sm-offset-0 col-xs-8">
-                        <h2>Photos</h2>
+                    <div class="col-sm-6 col-sm-offset-0 col-xs-8 col-xs-offset-0">
+                        <h2 class="hidden-xs">Photos</h2>
+                        <h2 class="hidden-sm hidden-md hidden-lg" style="font-size:5vw;">Photos</h2>
                     </div>
                     <div class="col-sm-3 col-xs-2">
-                        <a href="../portfolio/minesweeper" style="float:right"><span class="hidden-xs" style="font-size:x-large">Next</span> <span class="fa fa-angle-double-right" style="font-size:x-large;"></span></a>
+                        <a href="../portfolio/minesweeper" style="float:right"><span class="hidden-xs hidden-sm" style="font-size:x-large">Next</span> <span class="fa fa-angle-double-right" style="font-size:x-large;"></span></a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row bottomMargin10">
+        <div class="row">
             <!-- #region Photos -->
             <div class="col-xs-4">
-                <div class="divImage ratio11 portfolioClickableImage topMargin36" style="height:60vh;background-image: url(../img/portfolio/PhotoSlider/London/london00.jpg)" data-toggle="modal" data-target="#London">
-                    <div class="layer">
-                        <h3 class="pictureInformation" style="color:#ffffff;text-shadow:3px 3px 6px #000000; margin-top:30vh;">London</h3>
+                <div class="divImage ratio11 portfolioClickableImage orangePic bottomMargin20" style="min-height:60vh;background-image: url(../img/portfolio/PhotoSlider/London/london00.jpg)" data-toggle="modal" data-target="#London">
+                    <div class="layer orangePic">
+                        <p class="hidden-xs hidden-sm hidden-md imageText" style="font-size:2vw;">London</p>
+                        <p class="hidden-xs hidden-sm hidden-lg imageText" style="font-size:2.5vw;">London</p>
+                        <p class="hidden-xs hidden-md hidden-lg imageText" style="font-size:3vw;">London</p>
+                        <p class="hidden-sm hidden-md hidden-lg imageText" style="font-size:4.8vw;">London</p>
                     </div>
                 </div>
             </div>
             <div class="col-xs-4">
-                <div class="divImage ratio11 portfolioClickableImage topMargin36" style="height:60vh;background-image: url(../img/portfolio/PhotoSlider/Rio/rio00.jpg)" data-toggle="modal" data-target="#Rio">
-                    <div class="layer">
-                        <h3 class="pictureInformation" style="color:#ffffff;text-shadow:3px 3px 6px #000000; margin-top:30vh;">Rio</h3>
+                <div class="divImage ratio11 portfolioClickableImage topMargin36 bottomMargin20" style="min-height:60vh;background-image: url(../img/portfolio/PhotoSlider/Rio/rio00.jpg)" data-toggle="modal" data-target="#Rio">
+                    <div class="layer orangePic">
+                        <p class="hidden-xs hidden-sm hidden-md imageText" style="font-size:2vw;">Rio De Janeiro</p>
+                        <p class="hidden-xs hidden-sm hidden-lg imageText" style="font-size:2.5vw;">Rio De Janeiro</p>
+                        <p class="hidden-xs hidden-md hidden-lg imageText" style="font-size:3vw;">Rio De Janeiro</p>
+                        <p class="hidden-sm hidden-md hidden-lg imageText" style="font-size:4.8vw;">Rio</p>
                     </div>
                 </div>
             </div>
             <div class="col-xs-4">
-                <div class="divImage ratio11 portfolioClickableImage topMargin36" style="height:60vh;background-image: url(../img/portfolio/PhotoSlider/Tokyo/tokyo03.jpg)" data-toggle="modal" data-target="#Tokyo">
-                    <div class="layer">
-                        <h3 class="pictureInformation" style="color:#ffffff;text-shadow:3px 3px 6px #000000; margin-top:30vh;">Tokyo</h3>
+                <div class="divImage ratio11 portfolioClickableImage topMargin36 bottomMargin20" style="min-height:60vh;background-image: url(../img/portfolio/PhotoSlider/Tokyo/tokyo03.jpg)" data-toggle="modal" data-target="#Tokyo">
+                    <div class="layer orangePic">
+                        <p class="hidden-xs hidden-sm hidden-md imageText" style="font-size:2vw;">Tokyo</p>
+                        <p class="hidden-xs hidden-sm hidden-lg imageText" style="font-size:2.5vw;">Tokyo</p>
+                        <p class="hidden-xs hidden-md hidden-lg imageText" style="font-size:3vw;">Tokyo</p>
+                        <p class="hidden-sm hidden-md hidden-lg imageText" style="font-size:4.8vw;">Tokyo</p>
                     </div>
                 </div>
             </div>
-            <div id="London" class="modal">
-                <span class="closePortfolioModal" data-dismiss="modal">×</span>
-                <img class="London portfolioModalSize" src="~/img/Portfolio/PhotoSlider/London/london00.jpg">
-                <img class="London portfolioModalSize" src="~/img/Portfolio/PhotoSlider/London/london01.jpg">
-                <img class="London portfolioModalSize" src="~/img/Portfolio/PhotoSlider/London/london02.jpg">
-                <img class="London portfolioModalSize" src="~/img/Portfolio/PhotoSlider/London/london03.jpg">
-                <img class="London portfolioModalSize" src="~/img/Portfolio/PhotoSlider/London/london04.jpg">
-                <a class="carouselArrow leftCarouselArrow" onclick="plusDivs(-1, 'London')"><span class="fa fa-chevron-left"></span></a>
-                <a class="carouselArrow rightCarouselArrow" onclick="plusDivs(1, 'London')"><span class="fa fa-chevron-right"></span></a>
-            </div>
-            <div id="Rio" class="modal">
-                <span class="closePortfolioModal" data-dismiss="modal">×</span>
-                <img class="Rio portfolioModalSize" src="~/img/Portfolio/PhotoSlider/Rio/rio00.jpg">
-                <img class="Rio portfolioModalSize" src="~/img/Portfolio/PhotoSlider/Rio/rio01.jpg">
-                <img class="Rio portfolioModalSize" src="~/img/Portfolio/PhotoSlider/Rio/rio02.jpg">
-                <img class="Rio portfolioModalSize" src="~/img/Portfolio/PhotoSlider/Rio/rio03.jpg">
-                <img class="Rio portfolioModalSize" src="~/img/Portfolio/PhotoSlider/Rio/rio04.jpg">
-                <a class="carouselArrow leftCarouselArrow" onclick="plusDivs(-1, 'Rio')"><span class="fa fa-chevron-left"></span></a>
-                <a class="carouselArrow rightCarouselArrow" onclick="plusDivs(1, 'Rio')"><span class="fa fa-chevron-right"></span></a>
-            </div>
-            <div id="Tokyo" class="modal">
-                <span class="closePortfolioModal" data-dismiss="modal">×</span>
-                <img class="Tokyo portfolioModalSize" src="~/img/Portfolio/PhotoSlider/Tokyo/tokyo03.jpg">
-                <img class="Tokyo portfolioModalSize" src="~/img/Portfolio/PhotoSlider/Tokyo/tokyo04.jpg">
-                <img class="Tokyo portfolioModalSize" src="~/img/Portfolio/PhotoSlider/Tokyo/tokyo00.jpg">
-                <img class="Tokyo portfolioModalSize" src="~/img/Portfolio/PhotoSlider/Tokyo/tokyo01.jpg">
-                <img class="Tokyo portfolioModalSize" src="~/img/Portfolio/PhotoSlider/Tokyo/tokyo02.jpg">
-                <a class="carouselArrow leftCarouselArrow" onclick="plusDivs(-1, 'Tokyo')"><span class="fa fa-chevron-left"></span></a>
-                <a class="carouselArrow rightCarouselArrow" onclick="plusDivs(1, 'Tokyo')"><span class="fa fa-chevron-right"></span></a>
-            </div>
-            <!-- #endregion -->
+            <button class="standard-btn center-block hidden-xs bottomMargin20" style="width:30%" onclick="window.location.href = '/Home/Index#portfolio'">Portfolio</button>
+            <button class="standard-btn center-block hidden-sm hidden-md hidden-lg bottomMargin20" style="width:95%" onclick="window.location.href = '/Home/Index#portfolio'">Portfolio</button>
         </div>
+        <div id="London" class="modal">
+            <span class="closePortfolioModal" data-dismiss="modal">×</span>
+            <img class="London portfolioModalSize" src="~/img/Portfolio/PhotoSlider/London/london00.jpg">
+            <img class="London portfolioModalSize" src="~/img/Portfolio/PhotoSlider/London/london01.jpg">
+            <img class="London portfolioModalSize" src="~/img/Portfolio/PhotoSlider/London/london02.jpg">
+            <img class="London portfolioModalSize" src="~/img/Portfolio/PhotoSlider/London/london03.jpg">
+            <img class="London portfolioModalSize" src="~/img/Portfolio/PhotoSlider/London/london04.jpg">
+            <a class="carouselArrow leftCarouselArrow" onclick="plusDivs(-1, 'London')"><span class="fa fa-chevron-left"></span></a>
+            <a class="carouselArrow rightCarouselArrow" onclick="plusDivs(1, 'London')"><span class="fa fa-chevron-right"></span></a>
+        </div>
+        <div id="Rio" class="modal">
+            <span class="closePortfolioModal" data-dismiss="modal">×</span>
+            <img class="Rio portfolioModalSize" src="~/img/Portfolio/PhotoSlider/Rio/rio00.jpg">
+            <img class="Rio portfolioModalSize" src="~/img/Portfolio/PhotoSlider/Rio/rio01.jpg">
+            <img class="Rio portfolioModalSize" src="~/img/Portfolio/PhotoSlider/Rio/rio02.jpg">
+            <img class="Rio portfolioModalSize" src="~/img/Portfolio/PhotoSlider/Rio/rio03.jpg">
+            <img class="Rio portfolioModalSize" src="~/img/Portfolio/PhotoSlider/Rio/rio04.jpg">
+            <a class="carouselArrow leftCarouselArrow" onclick="plusDivs(-1, 'Rio')"><span class="fa fa-chevron-left"></span></a>
+            <a class="carouselArrow rightCarouselArrow" onclick="plusDivs(1, 'Rio')"><span class="fa fa-chevron-right"></span></a>
+        </div>
+        <div id="Tokyo" class="modal">
+            <span class="closePortfolioModal" data-dismiss="modal">×</span>
+            <img class="Tokyo portfolioModalSize" src="~/img/Portfolio/PhotoSlider/Tokyo/tokyo03.jpg">
+            <img class="Tokyo portfolioModalSize" src="~/img/Portfolio/PhotoSlider/Tokyo/tokyo04.jpg">
+            <img class="Tokyo portfolioModalSize" src="~/img/Portfolio/PhotoSlider/Tokyo/tokyo00.jpg">
+            <img class="Tokyo portfolioModalSize" src="~/img/Portfolio/PhotoSlider/Tokyo/tokyo01.jpg">
+            <img class="Tokyo portfolioModalSize" src="~/img/Portfolio/PhotoSlider/Tokyo/tokyo02.jpg">
+            <a class="carouselArrow leftCarouselArrow" onclick="plusDivs(-1, 'Tokyo')"><span class="fa fa-chevron-left"></span></a>
+            <a class="carouselArrow rightCarouselArrow" onclick="plusDivs(1, 'Tokyo')"><span class="fa fa-chevron-right"></span></a>
+        </div>
+        <!-- #endregion -->
     </div>
-    <button class="standard-btn btn-width-medium center-block" onclick="window.location.href = '/Home/Index#portfolio'">Portfolio</button>
 </div>
 <div class="topMargin80" style="height:8vh;"></div>
 
@@ -136,40 +147,4 @@
         }
         x[slideIndex - 1].style.display = "block";
     }
-
-    //  var currentIndex = 0,
-    //items = $('.container div'),
-    //itemAmt = items.length;
-
-    //  function cycleItems() {
-    //      var item = $('.container div').eq(currentIndex);
-    //      items.hide();
-    //      item.css('display', 'inline-block');
-    //  }
-
-    //  var autoSlide = setInterval(function () {
-    //      currentIndex += 1;
-    //      if (currentIndex > itemAmt - 1) {
-    //          currentIndex = 0;
-    //      }
-    //      cycleItems();
-    //  }, 3000);
-
-    //  $('.next').click(function () {
-    //      clearInterval(autoSlide);
-    //      currentIndex += 1;
-    //      if (currentIndex > itemAmt - 1) {
-    //          currentIndex = 0;
-    //      }
-    //      cycleItems();
-    //  });
-
-    //  $('.prev').click(function () {
-    //      clearInterval(autoSlide);
-    //      currentIndex -= 1;
-    //      if (currentIndex < 0) {
-    //          currentIndex = itemAmt - 1;
-    //      }
-    //      cycleItems();
-    //  });
 </script>
