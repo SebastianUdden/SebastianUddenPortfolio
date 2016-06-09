@@ -432,3 +432,79 @@ footer {
 
     .footerStyle .btn-circle:hover /*.btn-circle:focus*/ {
     }
+
+/*---------------------------------------------------------------------------
+                                 MODAL FIX 
+---------------------------------------------------------------------------*/
+
+.closePortfolioModal {
+    position: absolute;
+    color: #fff;
+    font-weight: bold;
+    transition: 0.3s;
+    font-weight: 300;
+    font-size: 40px;
+    top: 4px;
+    right: 20px;
+    opacity: 0.5;
+}
+
+    .closePortfolioModal:hover,
+    .closePortfolioModal:focus,
+    .carouselArrow:hover {
+        color: #ffffff;
+        opacity: 1;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+.carouselArrow {
+    position: absolute;
+    top: 45%;
+    color: #ffffff;
+    opacity: 0.5;
+    font-size: 32px;
+}
+
+.leftCarouselArrow {
+    left: 0;
+    margin-left: 20px;
+}
+
+.rightCarouselArrow {
+    right: 0;
+    margin-right: 20px;
+}
+
+.portfolioModalSize {
+    margin: 50px auto auto auto;
+    display: block;
+    width: auto;
+}
+
+@media (min-width: 768px) {
+    .portfolioModalSize {
+        height: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolioModalSize {
+        height: 80%;
+    }
+}
+
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+/*.navbar-fixed-top, .navbar-fixed-bottom {
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+}*/
+
+.modal-backdrop.in {
+    filter: alpha(opacity=90);
+    opacity: 0.9;
+}

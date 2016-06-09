@@ -1,15 +1,14 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-    <!-- #region NavBar -->
+}    
+<!-- #region NavBar -->
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                <button id="btnCollapse" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="/home/index#page-top">
+                <a class="navbar-brand page-scroll" href="#page-top">
                     <span class="light">Sebastian</span>Uddén
                 </a>
             </div>
@@ -21,13 +20,13 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/home/index#portfolio">Portfolio</a>
+                        <a class="page-scroll aLink" href="#portfolio">Portfolio</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/home/index#about">About</a>
+                        <a class="page-scroll aLink" href="#about">About</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/home/index#contact">Contact</a>
+                        <a class="page-scroll aLink" href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -36,5 +35,6 @@
         <!-- /.container -->
     </nav>
     <!-- #endregion -->
-
     @RenderBody()
+    <!-- #region Footer -->
+
