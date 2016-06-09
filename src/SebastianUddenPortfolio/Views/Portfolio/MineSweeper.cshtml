@@ -6,37 +6,49 @@
 <section id="minesweeper" class="container content-section text-center">
     <div class="row">
         <br />
-        <div class="col-lg-8 col-lg-offset-2">
-            <h2>Minesweeper</h2>
-            <hr />
-            <div ng-controller="MinesweeperCtrl">
-                <div class="portfolioBorderBox">
-                    <button class="standard-btn btn-width-medium" ng-if="hideStartButton" ng-click="showMines();">Start Game</button>
-                    <table ng-if="isMinesVisible" class="minefield" align="center">
-                        <tr ng-repeat="row in minefield.rows">
-                            <td ng-repeat="spot in row.spots" ng-click="uncoverSpot(spot)">
-                                <!-- #region Box-images -->
-                                <img ng-if="spot.isCovered" src="~/img/Portfolio/Minesweeper/covered.png" />
-                                <img ng-if="!spot.isCovered && spot.content == 'empty'" src="~/img/Portfolio/Minesweeper/empty.png" />
-                                <img ng-if="!spot.isCovered && spot.content == 'mine'" src="~/img/Portfolio/Minesweeper/mine.png" />
-                                @*<img ng-if="!spot.isCovered && spot.flagged == 'mine'" src="~/img/Portfolio/Minesweeper/flag-mine.png" />*@
-                                <img ng-if="!spot.isCovered && spot.content == 1" src="~/img/Portfolio/Minesweeper/number-1.png" />
-                                <img ng-if="!spot.isCovered && spot.content == 2" src="~/img/Portfolio/Minesweeper/number-2.png" />
-                                <img ng-if="!spot.isCovered && spot.content == 3" src="~/img/Portfolio/Minesweeper/number-3.png" />
-                                <img ng-if="!spot.isCovered && spot.content == 4" src="~/img/Portfolio/Minesweeper/number-4.png" />
-                                <img ng-if="!spot.isCovered && spot.content == 5" src="~/img/Portfolio/Minesweeper/number-5.png" />
-                                <img ng-if="!spot.isCovered && spot.content == 6" src="~/img/Portfolio/Minesweeper/number-6.png" />
-                                <img ng-if="!spot.isCovered && spot.content == 7" src="~/img/Portfolio/Minesweeper/number-7.png" />
-                                <img ng-if="!spot.isCovered && spot.content == 8" src="~/img/Portfolio/Minesweeper/number-8.png" />
-                                <!-- #endregion -->
-                            </td>
-                        </tr>
-                    </table>
-                    <br />
-                    <h3 ng-if="isWinMessageVisible" style="color:forestgreen">Congratulations, you won!</h3>
-                    <h3 ng-if="isLostMessageVisible" style="color:red">Game Over!</h3>
-                    <button class="standard-btn btn-width-medium" ng-if="isLostMessageVisible" onclick="window.location.href='/Portfolio/Minesweeper'">Play again</button>
-                    <button class="standard-btn btn-width-medium" ng-if="isMinesVisible" onclick="window.location.href = '/Home/Index#portfolio'">Portfolio</button>
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="row">
+                <div class="col-sm-3">
+                    <a href="../portfolio/photoslider" style="float:left"><span class="fa fa-angle-double-left" style="font-size:x-large;"></span> <span style="font-size:x-large">Previous</span></a>
+                </div>
+                <div class="col-sm-6">
+                    <h2>Minesweeper</h2>
+                </div>
+                <div class="col-sm-3">
+                    <a href="../portfolio/weatherapp" style="float:right"><span style="font-size:x-large">Next</span> <span class="fa fa-angle-double-right" style="font-size:x-large;"></span></a>
+                </div>
+            </div>
+            <div class="row">
+                <hr />
+                <div ng-controller="MinesweeperCtrl">
+                    <div class="portfolioBorderBox">
+                        <button class="standard-btn btn-width-medium" ng-if="hideStartButton" ng-click="showMines();">Start Game</button>
+                        <table ng-if="isMinesVisible" class="minefield" align="center">
+                            <tr ng-repeat="row in minefield.rows">
+                                <td ng-repeat="spot in row.spots" ng-click="uncoverSpot(spot)">
+                                    <!-- #region Box-images -->
+                                    <img ng-if="spot.isCovered" src="~/img/Portfolio/Minesweeper/covered.png" />
+                                    <img ng-if="!spot.isCovered && spot.content == 'empty'" src="~/img/Portfolio/Minesweeper/empty.png" />
+                                    <img ng-if="!spot.isCovered && spot.content == 'mine'" src="~/img/Portfolio/Minesweeper/mine.png" />
+                                    @*<img ng-if="!spot.isCovered && spot.flagged == 'mine'" src="~/img/Portfolio/Minesweeper/flag-mine.png" />*@
+                                    <img ng-if="!spot.isCovered && spot.content == 1" src="~/img/Portfolio/Minesweeper/number-1.png" />
+                                    <img ng-if="!spot.isCovered && spot.content == 2" src="~/img/Portfolio/Minesweeper/number-2.png" />
+                                    <img ng-if="!spot.isCovered && spot.content == 3" src="~/img/Portfolio/Minesweeper/number-3.png" />
+                                    <img ng-if="!spot.isCovered && spot.content == 4" src="~/img/Portfolio/Minesweeper/number-4.png" />
+                                    <img ng-if="!spot.isCovered && spot.content == 5" src="~/img/Portfolio/Minesweeper/number-5.png" />
+                                    <img ng-if="!spot.isCovered && spot.content == 6" src="~/img/Portfolio/Minesweeper/number-6.png" />
+                                    <img ng-if="!spot.isCovered && spot.content == 7" src="~/img/Portfolio/Minesweeper/number-7.png" />
+                                    <img ng-if="!spot.isCovered && spot.content == 8" src="~/img/Portfolio/Minesweeper/number-8.png" />
+                                    <!-- #endregion -->
+                                </td>
+                            </tr>
+                        </table>
+                        <br />
+                        <h3 ng-if="isWinMessageVisible" style="color:forestgreen">Congratulations, you won!</h3>
+                        <h3 ng-if="isLostMessageVisible" style="color:red">Game Over!</h3>
+                        <button class="standard-btn btn-width-medium" ng-if="isLostMessageVisible" onclick="window.location.href='/Portfolio/Minesweeper'">Play again</button>
+                        <button class="standard-btn btn-width-medium" ng-if="isMinesVisible" onclick="window.location.href = '/Home/Index#portfolio'">Portfolio</button>
+                    </div>
                 </div>
             </div>
         </div>

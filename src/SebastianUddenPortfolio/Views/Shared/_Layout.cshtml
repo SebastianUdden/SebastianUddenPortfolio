@@ -19,6 +19,7 @@
     <script src="~/js/jquery.easing.min.js"></script>
     
     <script src="~/js/grayscale.js"></script>
+    <script src="~/js/layout.js"></script>
     <!-- #endregion -->
     <!-- #region Bootstrap -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -39,9 +40,13 @@
     <link href="~/css/grayscale.css" rel="stylesheet" />
     <link href="~/CSS/main.css" rel="stylesheet" />
     <!-- #endregion -->
-    <!-- #region Angular start-up -->
+    <!-- #region Angular & Tooltip start-up -->
     <script>
         var app = angular.module('portfolioApp', ['ngRoute', 'ngResource']);
+        
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
     </script>
     <!-- #endregion -->
 </head>
@@ -90,7 +95,7 @@
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                <button id="btnCollapse" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
@@ -105,13 +110,13 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#portfolio">Portfolio</a>
+                        <a class="page-scroll aLink" href="#portfolio">Portfolio</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">About</a>
+                        <a class="page-scroll aLink" href="#about">About</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
+                        <a class="page-scroll aLink" href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -121,6 +126,26 @@
     </nav>
     <!-- #endregion -->
     @RenderBody()
+    <!-- #region Footer -->
+    <footer class="footerStyle">
+        <div class="container text-center">
+            <a href="#intro" class="btn btn-circle page-scroll upChevron">
+                <i class="fa fa-chevron-up animated" style="margin-top: -20px;"></i>
+            </a>
+            <br />
+            <ul class="list-inline banner-social-buttons">
+                <li>
+                    <button onclick="window.open('https://se.linkedin.com/in/sebastianudden','_blank')" class="round-icon-btn tooltipStyle" data-toggle="tooltip" title="LinkedIn"><span class="fa fa-linkedin fa-f"></span></button>
+                </li>
+                <li>
+                    <button onclick="window.open('https://github.com/sebastianudden', '_blank')" class="round-icon-btn tooltipStyle" data-toggle="tooltip" title="GitHub"><span class="fa fa-github fa-fw"></span></button>
+                </li>
+            </ul>
+            <br />
+            <p class="pSmall">Copyright &copy; | Sebastian Uddén| <a class="footerLink" href="mailto:sebastian.udden@gmail.com">sebastian.udden@gmail.com</a> | <a class="footerLink" href="tel:0046730797992"> +46 730 797 992 </a></p>
+        </div>
+    </footer>
+    <!-- #endregion -->
 </body>
 </html>
 

@@ -5,35 +5,57 @@
 
 <style>
     .carousel-inner {
-        height: 41vh;
+        height: 40vh;
+        background-color:black;
     }
 
     .carousel, img {
-        height: 100% !important;
-        width:100% !important;
-        border: 5px solid #ff6a00;
+        /*height: auto;*/
+        /*width: 100% !important;*/
+        /*border: 5px solid #ff6a00;*/
+        width: 100%;
+    /*background-size: cover;*/
+    background-position: center;
+    display: block;
+    margin-top:1vh;
+    margin-left: auto;
+    margin-right: auto;
     }
 
-    .carousel .item {
-        height: 98% !important;
-    }
+        .carousel .item {
+            height: auto;
+        }
 
     .item img {
         top: 0;
         left: 0;
-        min-height: 100% !important;
+        height: auto;
     }
 </style>
 <div ng-controller="photoSliderCtrl">
-    <div class="container content-section text-center"  ng-if="!showCarousel">
-        <button class="standard-btn btn-width-medium" onclick="window.location.href = '/Home/Index#portfolio'">Portfolio</button>
-        <button class="standard-btn btn-width-medium" ng-if="!showCarousel" onclick="toggleCarousel();">Show Carousel</button>
-        <button class="standard-btn btn-width-medium" ng-if="showCarousel" onclick="toggleCarousel();">Hide Carousel</button>
+    <div class="container content-section text-center">
+        <div class="row">
+            <br />
+            <div class="col-sm-8 col-sm-offset-2">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <a href="../portfolio/weatherapp" style="float:left"><span class="fa fa-angle-double-left" style="font-size:x-large;"></span> <span style="font-size:x-large">Previous</span></a>
+                    </div>
+                    <div class="col-sm-6">
+                        <h2>Photos</h2>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="../portfolio/minesweeper" style="float:right"><span style="font-size:x-large">Next</span> <span class="fa fa-angle-double-right" style="font-size:x-large;"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
     </div>
-    <br />
-    <br />
-    <br />
-    <div class="container slider" ng-if="showCarousel">
+
+    @*<div class="container slider" ng-if="showCarousel">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -85,7 +107,8 @@
         <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
             <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
-    </div>
+    </div>*@
+    <button class="standard-btn btn-width-medium center-block" onclick="window.location.href = '/Home/Index#portfolio'">Portfolio</button>
 </div>
 <script>
     app.controller('photoSliderCtrl', ['$scope', function ($scope) {

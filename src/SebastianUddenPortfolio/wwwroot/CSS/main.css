@@ -111,3 +111,23 @@ body {
     background-image: url(../assets/img/paddle_next_fff.png);
 }
 
+.tooltipStyle + .tooltip > .tooltip-inner {
+    background-color: #fff;
+    padding: 8px;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ff6a00;
+    -webkit-box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.25);
+    -moz-box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.25);
+    box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.25);
+}
+
+.tooltipStyle + .tooltip > .tooltip-arrow {
+    border-top-color: #fff;
+    text-shadow: 5px 5px 10px 1px rgba(0,0,0,0.25);
+}
+
+.redT + .tooltip > .tooltip-inner {
+    color: #D03427 !important;
+}
