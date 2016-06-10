@@ -20,6 +20,7 @@
                 </div>
             </div>
             <div class="row">
+                <p style="text-align:left">A weather application built in AngularJS which collects data from an existing API. Write the city and days of forecast below. The list contains weather information, temperatures and dates.</p>
                 <hr />
                 <div>
                     <div class="portfolioBorderBox">
@@ -32,9 +33,8 @@
                             <br />
                         </div>
                         <button class="standard-btn btn-width-large bottomMargin20 rightMargin10" ng-if="buttonToggle" ng-click="getData(city, days);">Get forecast</button>
-                        <button class="standard-btn btn-width-large bottomMargin20 rightMargin10" ng-if="!buttonToggle" ng-click="getForecast();">Show forecast</button>
-                        <button class="standard-btn btn-width-large bottomMargin20 rightMargin10" onclick="window.location.href = '/Home/Index#portfolio'">Portfolio</button>
-                        <p><span ng-if="!buttonToggle">Show <span class="myFontColor">{{days}} days</span> of weather for <span class="myFontColor">{{city}}</span> below </span><span ng-if="buttonToggle && !pageLoad">Showing <span class="myFontColor">{{days}} days</span> of weather for <span class="myFontColor">{{city}}</span> below</span></p>
+                        <button id="autoBtn" class="standard-btn btn-width-large bottomMargin20 rightMargin10" ng-if="!buttonToggle" ng-click="getForecast();">Loading forecast</button>
+                        <p><span ng-if="!buttonToggle">Show <span class="myFontColor">{{getDays}} days</span> of weather for <span class="myFontColor">{{getCity}}</span> below </span><span ng-if="buttonToggle && !pageLoad">Showing <span class="myFontColor">{{getDays}} days</span> of weather for <span class="myFontColor">{{getCity}}</span> below</span></p>
                     </div>
                 </div>
                 <br>
@@ -68,13 +68,17 @@
         $scope.days = 3;
         $scope.city = "Stockholm";
         $scope.pageLoad = true;
-        $scope.getData = function (getCity, days) {
+        $scope.getData = function (getCity, getDays) {
             $scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/forecast/daily", {
                 callback: "JSON_CALLBACK"
             }, { get: { method: "JSONP" } });
 
-            $scope.weatherResult = $scope.weatherAPI.get({ q: getCity, cnt: days, APPID: '6644f72d11e2ad2bdfdcc81a8e3734a9' });
+            $scope.weatherResult = $scope.weatherAPI.get({ q: getCity, cnt: getDays, APPID: '6644f72d11e2ad2bdfdcc81a8e3734a9' });
             $scope.buttonToggle = !$scope.buttonToggle;
+            setTimeout(function () {
+                var autoBtn = document.getElementById('autoBtn');
+                autoBtn.click();
+            }, 300);
         };
 
         $scope.getData($scope.city, $scope.days);
@@ -92,9 +96,10 @@
         };
 
         $scope.getForecast = function () {
-            $scope.cnt = $scope.weatherResult.cnt;
-            $scope.list = $scope.weatherResult.list;
             $scope.buttonToggle = !$scope.buttonToggle;
+            $scope.getDays = $scope.weatherResult.cnt;
+            $scope.getCity = $scope.weatherResult.city.name;
+            $scope.list = $scope.weatherResult.list;
             $scope.pageLoad = false;
         };
     }]);

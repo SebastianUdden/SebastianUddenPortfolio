@@ -48,7 +48,6 @@
                         <h4 ng-if="isWinMessageVisible" style="color:forestgreen">Congratulations, you won!</h4>
                         <h4 ng-if="isLostMessageVisible" style="color:red">Game Over!</h4>
                         <button class="standard-btn btn-width-medium bottomMargin20" ng-if="isLostMessageVisible" onclick="window.location.href='/Portfolio/Minesweeper'">Play again</button>
-                        <button class="standard-btn btn-width-medium bottomMargin20" ng-if="isMinesVisible" onclick="window.location.href = '/Home/Index#portfolio'">Portfolio</button>
                     </div>
                     <div ng-if="!isMinesVisible" class="topMargin80" style="height:22.3vh;"></div>
                     <div ng-if="isMinesVisible && !isLostMessageVisible" class="topMargin50" style="height:2.1vh;"></div>
